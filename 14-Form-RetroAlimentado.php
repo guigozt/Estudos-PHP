@@ -13,11 +13,13 @@
 
     <section>
         <?php 
-            $valor1 = $_POST['num1'] ?? 0;
-            $valor2 = $_POST['num2'] ?? 0;
+        // Capturando os valores do formulário 
+
+            $valor1 = $_GET['num1'] ?? 0; //Declarando variaveis, se não for enviado, será inicializado como 0 
+            $valor2 = $_GET['num2'] ?? 0;
         ?>
         <form action="
-            <?= $_SERVER['PHP_SELF']?>" method="POST">
+            <?= $_SERVER['PHP_SELF']?>" method="GET"> <!-- A requisição é feita para o próprio server (arquivo) -->
 
             <label>Número 1:</label>
             <input type="number" name="num1" id="idnum1" value="<?=$valor1?>">
