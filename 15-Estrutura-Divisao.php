@@ -9,12 +9,12 @@
 </head>
 
 <body>
-    <header><h1>Anatomia de Divisão de Números</h1></header>
+    <header><h1>Anatomia de uma Divisão</h1></header>
 
     <section>
         <?php 
             $dividendo = $_GET['dividendo'] ?? 0;
-            $divisor = $_GET['divisor'] ?? 0;
+            $divisor = $_GET['divisor'] ?? 1;
             //$result = $GET['result'] ?? null;
         ?>
         <form action="
@@ -24,7 +24,7 @@
             <input type="number" name="dividendo" id="iddividendo" value="<?=$dividendo?>">
 
             <label>Número 2:</label>
-            <input type="number" name="divisor" id="iddivisor" value="<?=$divisor?>">
+            <input type="number" name="divisor" id="iddivisor" min="1" value="<?=$divisor?>">
 
             <input type="submit" value="Dividir">
         </form>
@@ -35,21 +35,20 @@
         <h2>Estrutura da Divisão</h2>
 
         <?php 
-            if($divisor === 0)
-            {
-                echo "[AVISO] Impossivel divisão por 0";
-            }
-            else
-            {
-                $cociente = $dividendo / $divisor;
-                $resto = $dividendo % $divisor;
-
-                echo "<strong>Dividendo: </strong>$dividendo <br>";
-                echo "<strong>Divisor: </strong>$divisor <br>";
-                echo "<strong>Cociente: </strong>$cociente <br>"; 
-                echo "<strong>Resto: </strong>$resto";
-            }
+            $quociente = $dividendo / $divisor;
+            $resto = $dividendo % $divisor;
         ?>
+
+        <table class="divisao">
+            <tr>
+                <td> <?= $dividendo ?> </td>
+                <td> <?= $divisor ?> </td>
+            </tr>
+            <tr>
+                <td> <?= $resto ?> </td>
+                <td> <?= $quociente ?> </td>
+            </tr>
+        </table>
     </section>
 
     <footer>
