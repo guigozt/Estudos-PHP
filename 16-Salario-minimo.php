@@ -12,7 +12,8 @@
     <header><h1>Informe o seu salário</h1></header>
 
     <?php 
-        $salario = $_GET["salario"] ?? 1417;
+        $salarioMinimo = 1_518.00;
+        $salario = $_GET["salario"] ?? $salarioMinimo;
     ?>
 
     <section>
@@ -20,15 +21,16 @@
             <?= $_SERVER['PHP_SELF'] ?>" method="GET">
 
             <label for="salario" >Salário (R$): </label>
-            <input type="number" name="salario" id="idsalario" value="<? $salario ?>">
+            <input type="number" name="salario" id="idsalario" step="0.01" value="<? $salario ?>">
 
             <input type="submit" value="Verificar">
+
+            <p>Considerando o salário mínimo de <strong>R$ <?= number_format($salarioMinimo, 2, ",",".") ?></strong></p>
         </form>
     </section>
 
     <section id="resultado">
         <?php 
-            $salarioMinimo = 1417;
 
             $verificarSalario = floor($salario / $salarioMinimo); //função floor para arredondar o valor para o menor numer inteiro
             $adicionaisSalario = $salario - $salarioMinimo;
